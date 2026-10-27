@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Autoevaluación: Razón y Proporción Aritmética - Región Junín</title>
+    <style>
+        /* === ESTILOS GLOBALES Y RESET PARA MÓVIL === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --bg-input: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-green: #10b981;
+            --accent-green-hover: #059669;
+            --accent-blue: #3b82f6;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --border-color: #475569;
+            --font-size-base: 16px;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            padding: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+        }
+
+        /* === CABECERA CURRICULAR (CNEB) === */
+        .curricular-header {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .header-title {
+            color: #60a5fa;
+            font-size: 1.25rem;
+            font-weight: 800;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            background-color: #334155;
+            color: #e2e8f0;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .tag.highlight {
+            background-color: #1e40af;
+            color: #93c5fd;
+        }
+
+        .accordion-btn {
+            width: 100%;
+            background: #334155;
+            color: #f8fafc;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .accordion-content {
+            display: none;
+            padding-top: 10px;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+        }
+
+        .accordion-content.show {
+            display: block;
+        }
+
+        .accordion-content ul {
+            padding-left: 18px;
+            margin-top: 6px;
+        }
+
+        .accordion-content li {
+            margin-bottom: 6px;
+        }
+
+        /* === TARJETAS DE EJERCICIOS === */
+        .exercise-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 24px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+            position: relative;
+        }
+
+        .exercise-badge {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .exercise-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #f3f4f6;
+            margin-bottom: 12px;
+        }
+
+        .context-box {
+            background-color: #0f172a;
+            border-left: 4px solid var(--accent-blue);
+            padding: 12px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+        }
+
+        /* === OPCIÓN MÚLTIPLE (EJERCICIO 1) === */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .btn-option {
+            background-color: var(--bg-input);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .btn-option:active {
+            transform: scale(0.98);
+        }
+
+        .btn-option.selected {
+            border-color: var(--accent-blue);
+            background-color: #1e3a8a;
+        }
+
+        /* === INPUTS NUMÉRICOS (EJERCICIOS 2 Y 4) === */
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .label-input {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .num-input {
+            width: 100%;
+            background-color: var(--bg-input);
+            border: 2px solid var(--border-color);
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 700;
+            padding: 12px 16px;
+            border-radius: 12px;
+            outline: none;
+            text-align: center;
+        }
+
+        .num-input:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+
+        /* === ORDENAR PASOS (EJERCICIO 3) === */
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .step-item {
+            background-color: var(--bg-input);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-item.error-step {
+            border-color: var(--accent-red);
+            background-color: #450a0a;
+        }
+
+        .step-text {
+            flex-grow: 1;
+            font-size: 0.88rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .step-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .btn-arrow {
+            background-color: #475569;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .btn-arrow:active {
+            background-color: var(--accent-blue);
+        }
+
+        /* === TABLA INTERACTIVA (EJERCICIO 4) === */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .interactive-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 0.88rem;
+        }
+
+        .interactive-table th {
+            background-color: #0f172a;
+            color: #93c5fd;
+            padding: 10px 6px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .interactive-table td {
+            padding: 8px 4px;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .table-input {
+            width: 100%;
+            max-width: 80px;
+            background-color: var(--bg-input);
+            border: 2px solid var(--border-color);
+            color: #fff;
+            text-align: center;
+            padding: 8px 4px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .table-input.invalid {
+            border-color: var(--accent-red);
+            background-color: #450a0a;
+        }
+
+        .table-input.valid {
+            border-color: var(--accent-green);
+            background-color: #064e3b;
+        }
+
+        /* === RELACIONAR SITUACIÓN - CONCEPTO (EJERCICIO 5) === */
+        .relate-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .relate-section-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+        }
+
+        .relate-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card-select {
+            background-color: var(--bg-input);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .card-select.selected {
+            border-color: var(--accent-orange);
+            background-color: #78350f;
+        }
+
+        /* === BOTONES DE ACCIÓN === */
+        .btn-check {
+            width: 100%;
+            background-color: var(--accent-green);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+            transition: background-color 0.2s;
+        }
+
+        .btn-check:active {
+            background-color: var(--accent-green-hover);
+            transform: scale(0.99);
+        }
+
+        /* === RETROALIMENTACIÓN DE EJERCICIO === */
+        .feedback-box {
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .feedback-box.error {
+            display: block;
+            background-color: #450a0a;
+            border: 1px solid var(--accent-red);
+            color: #fca5a5;
+        }
+
+        .feedback-box.success {
+            display: block;
+            background-color: #064e3b;
+            border: 1px solid var(--accent-green);
+            color: #6ee7b7;
+        }
+
+        .procedure-box {
+            margin-top: 10px;
+            background-color: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            white-space: pre-wrap;
+        }
+
+        /* === PANEL DE RESULTADOS FINALES === */
+        .results-panel {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 2px solid var(--accent-orange);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            display: none;
+        }
+
+        .score-big {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-orange);
+            line-height: 1;
+            margin: 10px 0;
+        }
+
+        .score-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .summary-list {
+            text-align: left;
+            margin-bottom: 20px;
+            background-color: #0f172a;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            margin-bottom: 8px;
+        }
+
+        .summary-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .pedagogical-feedback {
+            background-color: #1e3a8a;
+            border-left: 4px solid var(--accent-blue);
+            padding: 14px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 0.92rem;
+            color: #dbeafe;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .btn-reset {
+            background-color: var(--accent-blue);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 24px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-reset:active {
+            background-color: #2563eb;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA CURRICULAR -->
+    <header class="curricular-header">
+        <h1 class="header-title">Matemática - 1.° Secundaria</h1>
+        <div class="tag-container">
+            <span class="tag highlight">Tema: Razón y Proporción Aritmética</span>
+            <span class="tag">Competencia: Resuelve problemas de cantidad</span>
+            <span class="tag">Región Junín - Perú</span>
+        </div>
+        <button class="accordion-btn" onclick="toggleCurriculum()">
+            <span>📋 Ver Capacidades y Desempeños CNEB</span>
+            <span id="accordion-icon">▼</span>
+        </button>
+        <div id="curriculum-content" class="accordion-content">
+            <p><strong>Capacidades:</strong></p>
+            <ul>
+                <li>Traduce cantidades a expresiones numéricas.</li>
+                <li>Comunica su comprensión sobre los números y las operaciones.</li>
+                <li>Usa estrategias y procedimientos de estimación y cálculo.</li>
+                <li>Argumenta afirmaciones sobre las relaciones numéricas.</li>
+            </ul>
+            <p style="margin-top: 8px;"><strong>Desempeños precisados:</strong></p>
+            <ul>
+                <li>1. Transforma relaciones de magnitudes a razones y proporciones aritméticas.</li>
+                <li>2. Expresa la razón aritmética como comparación por sustracción y la proporción como equidiferencia.</li>
+                <li>3. Selecciona estrategias para calcular términos desconocidos en una proporción.</li>
+                <li>4. Justifica propiedades como la constante de razón y equidiferencia en contextos de Junín.</li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR DE EJERCICIOS -->
+    <main id="exercises-container">
+        <!-- Generado dinámicamente con JS -->
+    </main>
+
+    <!-- BOTÓN FINAL DE REVISIÓN GLOBAL -->
+    <div style="margin-top: 20px; margin-bottom: 20px;">
+        <button id="btn-finish-all" class="btn-check" style="background-color: #8b5cf6;" onclick="finishAssessment()">
+            🏁 FINALIZAR Y VER PUNTAJE GLOBAL
+        </button>
+    </div>
+
+    <!-- PANEL DE RESULTADOS Y RETROALIMENTACIÓN FINAL -->
+    <section id="results-panel" class="results-panel">
+        <h2>RESULTADO FINAL DE AUTOEVALUACIÓN</h2>
+        <div id="score-display" class="score-big">00 / 20</div>
+        <div id="score-subtitle" class="score-subtitle">0 de 5 ejercicios correctos</div>
+
+        <div class="summary-list" id="summary-list">
+            <!-- Lista de resumen de aciertos/errores -->
+        </div>
+
+        <div class="pedagogical-feedback" id="pedagogical-feedback">
+            <!-- Retroalimentación docente personalizada -->
+        </div>
+
+        <button class="btn-reset" onclick="initApp()">🔄 NUEVO INTENTO (NUEVOS DATOS)</button>
+    </section>
+
+    <script>
+        // === ESTADO GLOBAL Y VARIABLES ===
+        let state = {
+            scores: [0, 0, 0, 0, 0],
+            completed: [false, false, false, false, false],
+            attempts: [0, 0, 0, 0, 0],
+            data: {}
+        };
+
+        // === FUNCIONES UTILITARIAS ===
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function toggleCurriculum() {
+            const content = document.getElementById('curriculum-content');
+            const icon = document.getElementById('accordion-icon');
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                icon.textContent = '▼';
+            } else {
+                content.classList.add('show');
+                icon.textContent = '▲';
+            }
+        }
+
+        // === GENERADOR DE DATOS ALEATORIOS CONTEXTUALIZADOS EN JUNÍN ===
+        function generateData() {
+            // EJERCICIO 1: Opción Múltiple (Producción de Papa en Huancayo vs Jauja)
+            const e1_antecedente = getRandomInt(45, 90); // Toneladas Huancayo
+            const e1_razon = getRandomInt(12, 30);      // Diferencia
+            const e1_consecuente = e1_antecedente - e1_razon; // Toneladas Jauja
+            
+            // Variantes de distractores
+            const opts1 = [
+                e1_consecuente,
+                e1_consecuente + getRandomInt(3, 6),
+                e1_antecedente + e1_razon,
+                Math.max(5, e1_consecuente - getRandomInt(3, 6))
+            ].sort(() => Math.random() - 0.5);
+
+            // EJERCICIO 2: Entrada Numérica (Precios en Feria Dominical de Huancayo)
+            // A - B = C - x  =>  x = C - (A - B)
+            const e2_A = getRandomInt(30, 60);
+            const e2_B = getRandomInt(10, e2_A - 5);
+            const e2_diff = e2_A - e2_B;
+            const e2_C = getRandomInt(e2_diff + 10, 80);
+            const e2_X = e2_C - e2_diff;
+
+            // EJERCICIO 3: Pasos Lógicos (Distribución de Libros en Tarma)
+            // Problema: "En Tarma, la IE San Ramón recibe 120 libros y la IE Angela Moreno 85. Si la razón aritmética se mantiene en Chanchamayo donde una IE recibe 95, ¿cuántos libros recibe la otra?"
+            const e3_A = 120, e3_B = 85, e3_r = 35, e3_C = 95, e3_D = 60;
+            const correctSteps3 = [
+                `Identificar la razón aritmética inicial: R = ${e3_A} - ${e3_B} = ${e3_r} libros.`,
+                `Plantear la equidiferencia con la segunda situación: ${e3_A} - ${e3_B} = ${e3_C} - x.`,
+                `Sustituir la razón hallada: ${e3_r} = ${e3_C} - x.`,
+                `Despejar la incógnita: x = ${e3_C} - ${e3_r} = ${e3_D} libros.`
+            ];
+            // Crear copia desordenada garantizando que cambie el orden
+            let shuffledSteps3 = [...correctSteps3];
+            while (JSON.stringify(shuffledSteps3) === JSON.stringify(correctSteps3)) {
+                shuffledSteps3.sort(() => Math.random() - 0.5);
+            }
+
+            // EJERCICIO 4: Tabla Interactiva (Venta de Maíz y Naranjas en Chanchamayo/Chupaca)
+            const e4_r1 = getRandomInt(15, 35);
+            const e4_b1 = getRandomInt(20, 50);
+            const e4_a1 = e4_b1 + e4_r1;
+
+            const e4_a2 = getRandomInt(60, 100);
+            const e4_r2 = getRandomInt(10, 25);
+            const e4_b2 = e4_a2 - e4_r2;
+
+            const e4_a3 = getRandomInt(70, 110);
+            const e4_b3 = getRandomInt(25, e4_a3 - 10);
+            const e4_r3 = e4_a3 - e4_b3;
+
+            // EJERCICIO 5: Relacionar Situación con Concepto (Valle del Mantaro)
+            const e5_situations = [
+                {
+                    text: "Comparar la producción de 80 sacos de maca en Junín con 50 sacos en Pasco hallando la resta (80 - 50 = 30).",
+                    type: "razon",
+                    concept: "Razón Aritmética (Comparación por Sustracción: A - B = r)"
+                },
+                {
+                    text: "Igualar la diferencia de precios de alcachofa (15 - 10) con la diferencia de precios de quinua (12 - 7).",
+                    type: "proporcion",
+                    concept: "Proporción Aritmética (Equidiferencia: A - B = C - D)"
+                }
+            ];
+            const e5_selected = e5_situations[getRandomInt(0, 1)];
+
+            state.data = {
+                e1: { antecedente: e1_antecedente, razon: e1_razon, consecuente: e1_consecuente, options: opts1, selected: null },
+                e2: { A: e2_A, B: e2_B, C: e2_C, X: e2_X, diff: e2_diff },
+                e3: { correct: correctSteps3, current: shuffledSteps3 },
+                e4: {
+                    row1: { a: e4_a1, b: e4_b1, r: e4_r1 }, // Pedir a
+                    row2: { a: e4_a2, b: e4_b2, r: e4_r2 }, // Pedir b
+                    row3: { a: e4_a3, b: e4_b3, r: e4_r3 }  // Pedir r
+                },
+                e5: { target: e5_selected, selectedSit: true, selectedConcept: null }
+            };
+        }
+
+        // === RENDERIZADO DE LA INTERFAZ DE EJERCICIOS ===
+        function renderExercises() {
+            const container = document.getElementById('exercises-container');
+            container.innerHTML = '';
+
+            // --- EJERCICIO 1 ---
+            const e1 = state.data.e1;
+            const card1 = document.createElement('div');
+            card1.className = 'exercise-card';
+            card1.innerHTML = `
+                <span class="exercise-badge">EJERCICIO 1 DE 5</span>
+                <h3 class="exercise-title">Producción Agrícola en el Valle del Mantaro</h3>
+                <div class="context-box">
+                    En una campaña agrícola, la provincia de <strong>Huancayo</strong> produjo <strong>${e1.antecedente} toneladas</strong> de papa nativa. Se sabe que la <strong>razón aritmética</strong> de producción entre Huancayo y Jauja es de <strong>${e1.razon} toneladas</strong> a favor de Huancayo. ¿Cuántas toneladas produjo <strong>Jauja</strong> (consecuente)?
+                </div>
+                <div class="options-grid" id="e1-options">
+                    ${e1.options.map((opt) => `
+                        <button class="btn-option ${e1.selected === opt ? 'selected' : ''}" onclick="selectOption1(${opt})">
+                            <span>📌 ${opt} toneladas</span>
+                        </button>
+                    `).join('')}
+                </div>
+                <button class="btn-check" onclick="checkExercise1()">Comprobar Ejercicio 1</button>
+                <div id="e1-feedback" class="feedback-box"></div>
+            `;
+            container.appendChild(card1);
+
+            // --- EJERCICIO 2 ---
+            const e2 = state.data.e2;
+            const card2 = document.createElement('div');
+            card2.className = 'exercise-card';
+            card2.innerHTML = `
+                <span class="exercise-badge">EJERCICIO 2 DE 5</span>
+                <h3 class="exercise-title">Feria Dominical de Huancayo (Equidiferencia)</h3>
+                <div class="context-box">
+                    En la Feria de Huancayo, la diferencia de costo entre un telar de lana (S/ ${e2.A}) y un tallado en mate (S/ ${e2.B}) equivale exactamente a la diferencia de costo entre un poncho (S/ ${e2.C}) y un sombrero de paja (S/ <strong>x</strong>).
+                    <br><br><strong>Proporción Aritmética:</strong> ${e2.A} - ${e2.B} = ${e2.C} - x
+                </div>
+                <div class="input-group">
+                    <label class="label-input" for="e2-input">Escribe el valor del sombrero (x en Soles):</label>
+                    <input type="number" id="e2-input" class="num-input" inputmode="numeric" pattern="[0-9]*" placeholder="Ingresa valor numérico">
+                </div>
+                <button class="btn-check" onclick="checkExercise2()">Comprobar Ejercicio 2</button>
+                <div id="e2-feedback" class="feedback-box"></div>
+            `;
+            container.appendChild(card2);
+
+            // --- EJERCICIO 3 ---
+            const e3 = state.data.e3;
+            const card3 = document.createElement('div');
+            card3.className = 'exercise-card';
+            card3.innerHTML = `
+                <span class="exercise-badge">EJERCICIO 3 DE 5</span>
+                <h3 class="exercise-title">Orden Secuencial: Reparto de Textilería en San Pedro de Cajas</h3>
+                <div class="context-box">
+                    Organiza los pasos para resolver la proporción aritmética usando las flechas (▲ Subir / ▼ Bajar):
+                </div>
+                <div class="steps-container" id="e3-steps-list">
+                    ${e3.current.map((stepText, idx) => `
+                        <div class="step-item" id="e3-step-${idx}">
+                            <span style="font-weight:bold; color:#60a5fa; font-size:1.1rem;">${idx + 1}.</span>
+                            <div class="step-text">${stepText}</div>
+                            <div class="step-controls">
+                                <button class="btn-arrow" onclick="moveStep3(${idx}, -1)" ${idx === 0 ? 'disabled style="opacity:0.3;"' : ''}>▲</button>
+                                <button class="btn-arrow" onclick="moveStep3(${idx}, 1)" ${idx === e3.current.length - 1 ? 'disabled style="opacity:0.3;"' : ''}>▼</button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                <button class="btn-check" onclick="checkExercise3()">Comprobar Ejercicio 3</button>
+                <div id="e3-feedback" class="feedback-box"></div>
+            `;
+            container.appendChild(card3);
+
+            // --- EJERCICIO 4 ---
+            const e4 = state.data.e4;
+            const card4 = document.createElement('div');
+            card4.className = 'exercise-card';
+            card4.innerHTML = `
+                <span class="exercise-badge">EJERCICIO 4 DE 5</span>
+                <h3 class="exercise-title">Tabla de Carga Agrícola: Chanchamayo y Chupaca</h3>
+                <div class="context-box">
+                    Completa los casilleros vacíos de la tabla recordando que la Razón Aritmética es: <br>
+                    <strong>Razón (r) = Antecedente (A) - Consecuente (C)</strong>
+                </div>
+                <div class="table-responsive">
+                    <table class="interactive-table">
+                        <thead>
+                            <tr>
+                                <th>Carga / Producto</th>
+                                <th>Antecedente (A)</th>
+                                <th>Consecuente (C)</th>
+                                <th>Razón (r)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>🍊 Naranjas (Kg)</td>
+                                <td><input type="number" id="e4-a1" class="table-input" inputmode="numeric" pattern="[0-9]*" placeholder="?"></td>
+                                <td>${e4.row1.b}</td>
+                                <td>${e4.row1.r}</td>
+                            </tr>
+                            <tr>
+                                <td>🌽 Maíz (Kg)</td>
+                                <td>${e4.row2.a}</td>
+                                <td><input type="number" id="e4-b2" class="table-input" inputmode="numeric" pattern="[0-9]*" placeholder="?"></td>
+                                <td>${e4.row2.r}</td>
+                            </tr>
+                            <tr>
+                                <td>☕ Café (Kg)</td>
+                                <td>${e4.row3.a}</td>
+                                <td>${e4.row3.b}</td>
+                                <td><input type="number" id="e4-r3" class="table-input" inputmode="numeric" pattern="[0-9]*" placeholder="?"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn-check" onclick="checkExercise4()">Comprobar Ejercicio 4</button>
+                <div id="e4-feedback" class="feedback-box"></div>
+            `;
+            container.appendChild(card4);
+
+            // --- EJERCICIO 5 ---
+            const e5 = state.data.e5;
+            const card5 = document.createElement('div');
+            card5.className = 'exercise-card';
+            card5.innerHTML = `
+                <span class="exercise-badge">EJERCICIO 5 DE 5</span>
+                <h3 class="exercise-title">Clasificación de Situaciones Cotidianas</h3>
+                <div class="context-box">
+                    Lee atentamente la siguiente situación de la región y selecciona el concepto matemático correcto:
+                </div>
+                <div style="background-color:#0f172a; padding:12px; border-radius:10px; margin-bottom:14px; border:1px solid #3b82f6;">
+                    📖 <strong>Situación:</strong> "${e5.target.text}"
+                </div>
+                <div class="relate-container">
+                    <div class="relate-section-title">Selecciona la categoría correspondiente:</div>
+                    <div class="relate-cards">
+                        <button class="card-select ${e5.selectedConcept === 'razon' ? 'selected' : ''}" onclick="selectConcept5('razon')">
+                            📊 Razón Aritmética (Comparación de 2 cantidades mediante resta: A - B = r)
+                        </button>
+                        <button class="card-select ${e5.selectedConcept === 'proporcion' ? 'selected' : ''}" onclick="selectConcept5('proporcion')">
+                            ⚖️ Proporción Aritmética (Igualdad entre 2 razones aritméticas: A - B = C - D)
+                        </button>
+                    </div>
+                </div>
+                <button class="btn-check" onclick="checkExercise5()">Comprobar Ejercicio 5</button>
+                <div id="e5-feedback" class="feedback-box"></div>
+            `;
+            container.appendChild(card5);
+        }
+
+        // === LOGICA EJERCICIO 1 ===
+        function selectOption1(val) {
+            state.data.e1.selected = val;
+            renderExercises();
+        }
+
+        function checkExercise1() {
+            const e1 = state.data.e1;
+            const fb = document.getElementById('e1-feedback');
+            if (e1.selected === null) {
+                fb.className = 'feedback-box error';
+                fb.innerHTML = '⚠️ Debes seleccionar una opción antes de comprobar.';
+                return;
+            }
+
+            if (e1.selected === e1.consecuente) {
+                state.scores[0] = 4;
+                state.completed[0] = true;
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `
+                    ✅ <strong>¡Correcto! (4 pts)</strong>
+                    <div class="procedure-box">
+Procedimiento paso a paso:
+1. Antecedente (Huancayo) = ${e1.antecedente} t
+2. Razón aritmética (Diferencia) = ${e1.razon} t
+3. Fórmula: Antecedente - Consecuente = Razón
+   ${e1.antecedente} - Consecuente = ${e1.razon}
+4. Despejando: Consecuente = ${e1.antecedente} - ${e1.razon} = ${e1.consecuente} t (Jauja).
+                    </div>
+                `;
+            } else {
+                state.scores[0] = 0;
+                fb.className = 'feedback-box error';
+                fb.innerHTML = `
+                    ❌ <strong>Respuesta incorrecta.</strong><br>
+                    💡 <em>Pista pedagógica:</em> Recuerda que si el antecedente (Huancayo) es mayor por ${e1.razon} toneladas, para hallar a Jauja debes RESTAR la razón a la producción de Huancayo. ¡Inténtalo de nuevo!
+                `;
+            }
+        }
+
+        // === LOGICA EJERCICIO 2 ===
+        function checkExercise2() {
+            const inputVal = parseInt(document.getElementById('e2-input').value);
+            const fb = document.getElementById('e2-feedback');
+            const e2 = state.data.e2;
+
+            if (isNaN(inputVal)) {
+                fb.className = 'feedback-box error';
+                fb.innerHTML = '⚠️ Escribe un número válido antes de comprobar.';
+                return;
+            }
+
+            if (inputVal === e2.X) {
+                state.scores[1] = 4;
+                state.completed[1] = true;
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `
+                    ✅ <strong>¡Excelente cálculo! (4 pts)</strong>
+                    <div class="procedure-box">
+Procedimiento mediante Equidiferencia:
+Ecuación: ${e2.A} - ${e2.B} = ${e2.C} - x
+1. Hallar la razón del primer miembro: ${e2.A} - ${e2.B} = ${e2.diff}
+2. Sustituir en la proporción: ${e2.diff} = ${e2.C} - x
+3. Despejar x: x = ${e2.C} - ${e2.diff}
+4. Resultado: x = ${e2.X} Soles.
+
+(Propiedad fundamental: ${e2.A} + ${e2.X} = ${e2.B} + ${e2.C} -> ${e2.A + e2.X} = ${e2.B + e2.C})
+                    </div>
+                `;
+            } else {
+                state.scores[1] = 0;
+                fb.className = 'feedback-box error';
+                fb.innerHTML = `
+                    ❌ <strong>El valor introducido no cumple la igualdad.</strong><br>
+                    💡 <em>Pista pedagógica:</em> Primero resta ${e2.A} - ${e2.B} = ${e2.diff}. Ahora busca qué número 'x' al restárselo a ${e2.C} te vuelve a dar ${e2.diff}. ¡Corrige y vuelve a intentar!
+                `;
+            }
+        }
+
+        // === LOGICA EJERCICIO 3 ===
+        function moveStep3(index, direction) {
+            const arr = state.data.e3.current;
+            const newIndex = index + direction;
+            if (newIndex >= 0 && newIndex < arr.length) {
+                const temp = arr[index];
+                arr[index] = arr[newIndex];
+                arr[newIndex] = temp;
+                renderExercises();
+            }
+        }
+
+        function checkExercise3() {
+            const e3 = state.data.e3;
+            const fb = document.getElementById('e3-feedback');
+            let firstErrorIdx = -1;
+
+            for (let i = 0; i < e3.correct.length; i++) {
+                if (e3.current[i] !== e3.correct[i]) {
+                    firstErrorIdx = i;
+                    break;
+                }
+            }
+
+            // Limpiar estilos de error previos
+            document.querySelectorAll('.step-item').forEach(el => el.classList.remove('error-step'));
+
+            if (firstErrorIdx === -1) {
+                state.scores[2] = 4;
+                state.completed[2] = true;
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `
+                    ✅ <strong>¡Orden lógico perfecto! (4 pts)</strong>
+                    <div class="procedure-box">
+Secuencia correcta de resolución:
+1.° Identificar razón inicial.
+2.° Plantear la igualdad (equidiferencia).
+3.° Sustituir valores conocidos.
+4.° Despejar la incógnita.
+                    </div>
+                `;
+            } else {
+                state.scores[2] = 0;
+                const errorElement = document.getElementById(`e3-step-${firstErrorIdx}`);
+                if (errorElement) errorElement.classList.add('error-step');
+
+                fb.className = 'feedback-box error';
+                fb.innerHTML = `
+                    ❌ <strong>El orden no es correcto aún.</strong><br>
+                    💡 <em>Pista pedagógica:</em> Revisa el paso ubicado en la <strong>posición ${firstErrorIdx + 1}</strong> (resaltado en rojo). Recuerda que primero se analiza la razón conocida antes de formular la proporción completa.
+                `;
+            }
+        }
+
+        // === LOGICA EJERCICIO 4 ===
+        function checkExercise4() {
+            const e4 = state.data.e4;
+            const inputA1 = parseInt(document.getElementById('e4-a1').value);
+            const inputB2 = parseInt(document.getElementById('e4-b2').value);
+            const inputR3 = parseInt(document.getElementById('e4-r3').value);
+            const fb = document.getElementById('e4-feedback');
+
+            const elA1 = document.getElementById('e4-a1');
+            const elB2 = document.getElementById('e4-b2');
+            const elR3 = document.getElementById('e4-r3');
+
+            let v1 = (inputA1 === e4.row1.a);
+            let v2 = (inputB2 === e4.row2.b);
+            let v3 = (inputR3 === e4.row3.r);
+
+            elA1.className = `table-input ${v1 ? 'valid' : 'invalid'}`;
+            elB2.className = `table-input ${v2 ? 'valid' : 'invalid'}`;
+            elR3.className = `table-input ${v3 ? 'valid' : 'invalid'}`;
+
+            if (v1 && v2 && v3) {
+                state.scores[3] = 4;
+                state.completed[3] = true;
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `
+                    ✅ <strong>¡Tabla completada correctamente! (4 pts)</strong>
+                    <div class="procedure-box">
+Relaciones conceptuales aplicadas:
+1. Fila 1 (Naranjas): Antecedente = Consecuente + Razón -> ${e4.row1.b} + ${e4.row1.r} = ${e4.row1.a}
+2. Fila 2 (Maíz): Consecuente = Antecedente - Razón -> ${e4.row2.a} - ${e4.row2.r} = ${e4.row2.b}
+3. Fila 3 (Café): Razón = Antecedente - Consecuente -> ${e4.row3.a} - ${e4.row3.b} = ${e4.row3.r}
+                    </div>
+                `;
+            } else {
+                state.scores[3] = 0;
+                fb.className = 'feedback-box error';
+                fb.innerHTML = `
+                    ❌ <strong>Hay celdas con valores incorrectos (resaltadas en rojo).</strong><br>
+                    💡 <em>Pistas específicas:</em><br>
+                    ${!v1 ? `- Fila Naranjas: Si el consecuente es ${e4.row1.b} y la razón es ${e4.row1.r}, suma ambos para hallar el antecedente.<br>` : ''}
+                    ${!v2 ? `- Fila Maíz: Si el antecedente es ${e4.row2.a} y la razón es ${e4.row2.r}, resta la razón al antecedente.<br>` : ''}
+                    ${!v3 ? `- Fila Café: Resta directa ${e4.row3.a} - ${e4.row3.b}.<br>` : ''}
+                `;
+            }
+        }
+
+        // === LOGICA EJERCICIO 5 ===
+        function selectConcept5(type) {
+            state.data.e5.selectedConcept = type;
+            renderExercises();
+        }
+
+        function checkExercise5() {
+            const e5 = state.data.e5;
+            const fb = document.getElementById('e5-feedback');
+
+            if (!e5.selectedConcept) {
+                fb.className = 'feedback-box error';
+                fb.innerHTML = '⚠️ Por favor, selecciona una categoría antes de comprobar.';
+                return;
+            }
+
+            if (e5.selectedConcept === e5.target.type) {
+                state.scores[4] = 4;
+                state.completed[4] = true;
+                fb.className = 'feedback-box success';
+                fb.innerHTML = `
+                    ✅ <strong>¡Identificación conceptual correcta! (4 pts)</strong>
+                    <div class="procedure-box">
+Justificación:
+Corresponde a: ${e5.target.concept}.
+Recuerda: Una razón compara DOS cantidades restando. Una proporción compara DOS RAZONES igualando sus restas.
+                    </div>
+                `;
+            } else {
+                state.scores[4] = 0;
+                fb.className = 'feedback-box error';
+                fb.innerHTML = `
+                    ❌ <strong>Categoría incorrecta.</strong><br>
+                    💡 <em>Pista pedagógica:</em> Lee la situación con atención. Si el texto solo realiza UNA RESTA entre dos números es Razón Aritmética. Si IGUALA DOS RESTAS de parejas distintas de datos es una Proporción Aritmética. ¡Inténtalo de nuevo!
+                `;
+            }
+        }
+
+        // === FINALIZACIÓN Y RETROALIMENTACIÓN FINAL ===
+        function finishAssessment() {
+            const totalScore = state.scores.reduce((a, b) => a + b, 0);
+            const correctCount = state.scores.filter(s => s === 4).length;
+
+            const resultsPanel = document.getElementById('results-panel');
+            const scoreDisplay = document.getElementById('score-display');
+            const scoreSubtitle = document.getElementById('score-subtitle');
+            const summaryList = document.getElementById('summary-list');
+            const fbPedagogical = document.getElementById('pedagogical-feedback');
+
+            scoreDisplay.textContent = `${totalScore.toString().padStart(2, '0')} / 20`;
+            scoreSubtitle.textContent = `${correctCount} de 5 ejercicios resueltos correctamente`;
+
+            // Construcción del resumen
+            const names = [
+                "1. Opción múltiple (Producción en Mantaro)",
+                "2. Entrada numérica (Feria de Huancayo)",
+                "3. Ordenar pasos (Textilería en San Pedro)",
+                "4. Tabla interactiva (Carga en Chanchamayo)",
+                "5. Relación conceptual (Situaciones Junín)"
+            ];
+
+            summaryList.innerHTML = names.map((name, i) => `
+                <div class="summary-item">
+                    <span>${state.scores[i] === 4 ? '✅' : '❌'}</span>
+                    <span>${name}: <strong>${state.scores[i]} pts</strong></span>
+                </div>
+            `).join('');
+
+            // Retroalimentación pedagógica personalizada según CNEB
+            let feedbackHTML = '';
+
+            if (correctCount === 5) {
+                feedbackHTML = `
+                    🎉 <strong>¡Felicitaciones Excelente Desempeño! (20 puntos)</strong><br>
+                    Has demostrado un dominio completo en la resolución de problemas con razones y proporciones aritméticas en el contexto de nuestra región Junín. Reconocemos tu capacidad para traducir cantidades, aplicar la propiedad de equidiferencia y argumentar tus procedimientos de forma lógica. ¡Sigue adelante!
+                `;
+            } else if (correctCount === 4) {
+                const failedIdx = state.scores.findIndex(s => s === 0);
+                feedbackHTML = `
+                    👏 <strong>¡Muy buen trabajo! Has alcanzado 16 puntos.</strong><br>
+                    Solo tuviste una dificultad en la <strong>Actividad ${failedIdx + 1}</strong>.<br>
+                    📌 <em>Recomendación pedagógica:</em> Revisa con calma el procedimiento de esa actividad específica. Recuerda la diferencia central entre restar dos cantidades (razón) y despejar una ecuación de equidiferencia (proporción).
+                `;
+            } else if (correctCount >= 2 && correctCount <= 3) {
+                const failedIndices = state.scores.map((s, i) => s === 0 ? i + 1 : null).filter(val => val !== null);
+                feedbackHTML = `
+                    💪 <strong>¡Buen esfuerzo! Has obtenido ${totalScore} puntos.</strong><br>
+                    Las actividades que debes revisar y volver a intentar son: <strong>${failedIndices.join(', ')}</strong>.<br>
+                    📌 <em>Consejo de repaso:</em>
+                    <ul style="margin-top:6px; padding-left:16px;">
+                        <li><strong>Razón Aritmética:</strong> Es siempre la diferencia (resta) entre un antecedente y un consecuente ($A - B = r$).</li>
+                        <li><strong>Proporción Aritmética:</strong> Exige que las dos diferencias sean iguales ($A - B = C - D$).</li>
+                    </ul>
+                `;
+            } else { // 0 a 1 correctas
+                feedbackHTML = `
+                    📚 <strong>Necesitamos reforzar los conceptos básicos (Puntaje: ${totalScore} pts).</strong><br>
+                    Te recomendamos repasar la teoría con el siguiente <strong>ejemplo guiado sencillo:</strong><br><br>
+                    <em>Ejemplo:</em> En la feria de Chupaca, Juan compra un queso por S/ 18 y María una mantequilla por S/ 10.<br>
+                    • La <strong>Razón Aritmética</strong> es la resta: $18 - 10 = 8$ Soles.<br>
+                    • Si Pedro compra carne por S/ 20 y Rosa verdura por S/ 12 ($20 - 12 = 8$), ambas familias tienen la misma diferencia.<br>
+                    • Forma la <strong>Proporción Aritmética:</strong> $18 - 10 = 20 - 12$.<br><br>
+                    ¡Haz clic en <strong>"NUEVO INTENTO"</strong> para volver a practicar con ejercicios similares!
+                `;
+            }
+
+            fbPedagogical.innerHTML = feedbackHTML;
+            resultsPanel.style.display = 'block';
+            resultsPanel.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // === INICIALIZACIÓN DE LA APLICACIÓN ===
+        function initApp() {
+            state.scores = [0, 0, 0, 0, 0];
+            state.completed = [false, false, false, false, false];
+            state.attempts = [0, 0, 0, 0, 0];
+            document.getElementById('results-panel').style.display = 'none';
+            generateData();
+            renderExercises();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Arrancar la app al cargar la ventana
+        window.onload = initApp;
+    </script>
+</body>
+</html>
